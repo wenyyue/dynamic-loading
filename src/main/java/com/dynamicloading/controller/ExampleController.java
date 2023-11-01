@@ -14,7 +14,6 @@ public class ExampleController {
     public void dynamicLoading(@RequestParam("class") MultipartFile classFile, @RequestParam String packagePath,
                                @RequestParam String methodName, @RequestParam Object[] args)
             throws IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-//        log.info("SpringContextUtil's classloader-> {}", SpringContextUtil.class.getClassLoader());
         ClassFileClassLoader classFileClassLoader = new ClassFileClassLoader();
         String className = classFile.getOriginalFilename().split("\\.")[0];
         Class<?> clazz = classFileClassLoader.defineClass(packagePath + "." + className, classFile.getInputStream());
